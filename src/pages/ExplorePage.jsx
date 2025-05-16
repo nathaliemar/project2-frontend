@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card } from "../components/Card";
 import { extRecipeService } from "../services/ext-recipe-service";
+import { PageHeadline } from "../components/PageHeadline";
 
 export function ExplorePage() {
   const { getAllExtRecipes } = extRecipeService();
@@ -17,7 +18,7 @@ export function ExplorePage() {
   console.log(getAllResponse);
   return (
     <div className="explore-page">
-      <h2>Explore all recipes</h2>
+      <PageHeadline text="Explore all recipes" />
       <div>
         {extRecipes.map((recipe) => {
           return (
