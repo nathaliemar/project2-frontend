@@ -1,8 +1,8 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function Navbar() {
   return (
-    <div className="navbar bg-base-100 shadow-sm sticky top-0">
+    <div className="navbar bg-base-100 shadow-sm sticky top-0 z-50">
       <div className="flex-1">
         <Link to={"/"} className="btn btn-ghost text-xl">
           getCooked
@@ -30,18 +30,4 @@ export function Navbar() {
       </div>
     </div>
   );
-  //   return (
-  //     <nav className="navbar rounded-box shadow-base-300/20 shadow-sm">
-  //       <div className="nav-left">
-  //         <div className="nav-title">getCooked</div>
-  //         <Link to={"/"}>
-  //           <img className="nav-logo"></img>
-  //         </Link>
-  //       </div>
-  //       <div className="nav-right">
-  //         <NavLink to={"/"}>Home</NavLink>
-  //         <NavLink to={"/cookbook"}>My Cookbook</NavLink>
-  //       </div>
-  //     </nav>
-  //   );
 }
