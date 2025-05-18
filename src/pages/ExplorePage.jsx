@@ -15,7 +15,6 @@ export function ExplorePage() {
   if (getAllError) return <p>Oops, there has been an issue</p>;
   const extRecipes = getAllResponse?.recipes || [];
 
-  console.log(getAllResponse);
   return (
     <div className="explore-page">
       <PageHeadline text="Explore all recipes" />

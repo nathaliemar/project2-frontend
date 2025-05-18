@@ -6,6 +6,7 @@ import {
   ExplorePage,
   AddRecipePage,
   AboutPage,
+  RecipeDetailsPage,
 } from "./pages";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/explore" element={<ExplorePage />} />
+          <Route path="/recipes/:recipeId" element={<RecipeDetailsPage />} />
           <Route path="/cookbook" element={<CookbookPage />} />
           <Route path="/cookbook/add" element={<AddRecipePage />} />
           <Route path="/about" element={<AboutPage />} />
