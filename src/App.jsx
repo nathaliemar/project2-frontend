@@ -7,6 +7,7 @@ import {
   AddRecipePage,
   AboutPage,
   RecipeDetailsPage,
+  NotFoundPage,
 } from "./pages";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/cookbook" element={<CookbookPage />} />
           <Route path="/cookbook/add" element={<AddRecipePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />

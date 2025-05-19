@@ -1,3 +1,9 @@
+import { PageHeadline } from "../components/PageHeadline";
+
 export function CookbookPage() {
-  return <div className="cookbook">This is the cookbook</div>;
+  return (
+    <div className="cookbook">
+      <PageHeadline text="Your cookbook" />
+    </div>
+  );
 }
