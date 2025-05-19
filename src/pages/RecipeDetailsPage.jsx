@@ -5,7 +5,6 @@ import { useEffect } from "react";
 
 export function RecipeDetailsPage() {
   const { recipeId } = useParams();
-
   const {
     response: getExtRecipeResponse,
     error: getExtRecipeError,
@@ -14,11 +13,15 @@ export function RecipeDetailsPage() {
   } = useExtRecipeService();
 
   useEffect(() => {
+    console.log("huhu");
     getExtRecipeById(recipeId);
   }, []);
 
+  console.log("API response:", getExtRecipeResponse);
+
   if (getExtRecipeLoading) return <p>Loading...</p>;
   if (getExtRecipeError) return <p>Oops, there has been an issue</p>;
+  if (!getExtRecipeResponse) return <p>No data available</p>; //? Not having this line caused issues, likely due to us attempting to access props before the api call was done
 
   return (
     <div className="recipe-page">

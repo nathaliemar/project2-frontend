@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
 // https://dummyjson.com/recipes
 
-export function useFetch(baseURL) {
+export default function useFetch(baseURL) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -12,9 +12,7 @@ export function useFetch(baseURL) {
     baseURL,
     // withCredentials: true,
   });
-
   // fetcher({})
-  //fetcher({endPoint:"/1"})
   const fetcher = async ({
     method = "GET",
     endPoint = "/",
@@ -32,7 +30,7 @@ export function useFetch(baseURL) {
         // timeout,
       });
 
-      setData(response);
+      setData(response.data); //TODO Why did it first work with only "response", then stopped?
       setError(null);
     } catch (err) {
       console.error("Error in useFetch hook", err);

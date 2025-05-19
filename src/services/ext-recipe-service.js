@@ -1,4 +1,4 @@
-import { useFetch } from "../hooks/useFetch";
+import useFetch from "../hooks/useFetch";
 
 export const useExtRecipeService = () => {
   const {
@@ -7,8 +7,11 @@ export const useExtRecipeService = () => {
     loading,
     fetcher,
   } = useFetch("https://dummyjson.com/recipes");
-  const getAllExtRecipes = () => fetcher();
-  const getExtRecipeById = (id) => fetcher({ endPoint: "/" + id });
+  const getAllExtRecipes = () => fetcher({});
+  const getExtRecipeById = (recipeId) => {
+    console.log("fetching recipe with id:", recipeId);
+    return fetcher({ endPoint: "/" + recipeId });
+  };
 
   return {
     response,
@@ -16,5 +19,6 @@ export const useExtRecipeService = () => {
     loading,
     getAllExtRecipes,
     getExtRecipeById,
+    // getExtRecipeById: (id) => useFetch("https://dummyjson.com/recipes/" + id),
   };
 };
