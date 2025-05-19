@@ -1,15 +1,21 @@
 import { useParams } from "react-router-dom";
-import { extRecipeService } from "../services/ext-recipe-service";
+import { useExtRecipeService } from "../services/ext-recipe-service";
 import { PageHeadline } from "../components/PageHeadline";
+import { useEffect } from "react";
 
 export function RecipeDetailsPage() {
   const { recipeId } = useParams();
-  const { getExtRecipeById } = extRecipeService();
+
   const {
     response: getExtRecipeResponse,
     error: getExtRecipeError,
     loading: getExtRecipeLoading,
-  } = getExtRecipeById(recipeId);
+    getExtRecipeById,
+  } = useExtRecipeService();
+
+  useEffect(() => {
+    getExtRecipeById(recipeId);
+  }, []);
 
   if (getExtRecipeLoading) return <p>Loading...</p>;
   if (getExtRecipeError) return <p>Oops, there has been an issue</p>;
@@ -31,7 +37,19 @@ export function RecipeDetailsPage() {
           <li>{getExtRecipeResponse.caloriesPerServing} kcal per serving</li>
         </ul>
       </div>
-      <p></p>
+      <ul className="list-disc list-inside">
+        Ingredients
+        {getExtRecipeResponse.ingredients.map((ingredient, i) => (
+          <li key={i}>{ingredient}</li>
+        ))}
+      </ul>
+
+      <ol className="list-decimal list-inside">
+        Instructions
+        {getExtRecipeResponse.instructions.map((step, i) => (
+          <li key={i}>{step}</li>
+        ))}
+      </ol>
     </div>
   );
 }

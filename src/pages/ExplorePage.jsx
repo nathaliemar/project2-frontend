@@ -1,16 +1,20 @@
 import { Link } from "react-router-dom";
 import { Card } from "../components/Card";
-import { extRecipeService } from "../services/ext-recipe-service";
+import { useExtRecipeService } from "../services/ext-recipe-service";
 import { PageHeadline } from "../components/PageHeadline";
+import { useEffect } from "react";
 
 export function ExplorePage() {
-  const { getAllExtRecipes } = extRecipeService();
   const {
     response: getAllResponse,
     error: getAllError,
     loading: getAllLoading,
-  } = getAllExtRecipes();
+    getAllExtRecipes,
+  } = useExtRecipeService();
 
+  useEffect(() => {
+    getAllExtRecipes();
+  }, []);
   if (getAllLoading) return <p>Loading...</p>;
   if (getAllError) return <p>Oops, there has been an issue</p>;
   const extRecipes = getAllResponse?.recipes || [];
