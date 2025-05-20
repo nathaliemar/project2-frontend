@@ -12,7 +12,6 @@ export default function useFetch(baseURL) {
     baseURL,
     // withCredentials: true,
   });
-  // fetcher({})
   const fetcher = async ({
     method = "GET",
     endPoint = "/",
@@ -29,8 +28,9 @@ export default function useFetch(baseURL) {
         headers,
         // timeout,
       });
+      console.log(response);
 
-      setData(response.data); //TODO Why did it first work with only "response", then stopped?
+      setData(response); //TODO Why did it first work with only "response", then stopped?
       setError(null);
     } catch (err) {
       console.error("Error in useFetch hook", err);

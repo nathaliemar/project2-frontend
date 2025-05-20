@@ -4,6 +4,7 @@ import { useExtRecipeService } from "../services/ext-recipe-service";
 import { PageHeadline } from "../components/PageHeadline";
 import { useEffect } from "react";
 import { RecipeCard } from "../components/RecipeCard";
+import { LoadingScreen } from "../components/LoadingScreen";
 
 export function ExplorePage() {
   const {
@@ -16,9 +17,9 @@ export function ExplorePage() {
   useEffect(() => {
     getAllExtRecipes();
   }, []);
-  if (getAllLoading) return <p>Loading...</p>;
+  if (getAllLoading) return <LoadingScreen />;
   if (getAllError) return <p>Oops, there has been an issue</p>;
-  const extRecipes = getAllResponse?.recipes || [];
+  const extRecipes = getAllResponse?.data.recipes || [];
 
   const handleSave = (id) => {
     console.log(`Saved recipe #${id}`);

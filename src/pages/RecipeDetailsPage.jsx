@@ -21,35 +21,43 @@ export function RecipeDetailsPage() {
 
   if (getExtRecipeLoading) return <p>Loading...</p>;
   if (getExtRecipeError) return <p>Oops, there has been an issue</p>;
-  if (!getExtRecipeResponse) return <p>No data available</p>; //? Not having this line caused issues, likely due to us attempting to access props before the api call was done
+  if (!getExtRecipeResponse) return <p>No data available</p>; //TODO: Check if needed elsewhere
+  const {
+    name,
+    image,
+    prepTimeMinutes,
+    difficulty,
+    servings,
+    caloriesPerServing,
+    cookTimeMinutes,
+    ingredients,
+    instructions,
+  } = getExtRecipeResponse.data;
 
   return (
     <div className="recipe-page">
-      <PageHeadline text={getExtRecipeResponse.name} />
-      <img
-        src={getExtRecipeResponse.image}
-        alt={`Photo of ${getExtRecipeResponse.name}`}
-      />
+      <PageHeadline text={name} />
+      <img src={image} alt={`Photo of ${name}`} />
       <div>
         Key facts
         <ul>
-          <li>Preparation time: {getExtRecipeResponse.prepTimeMinutes} min</li>
-          <li>Cooking time: {getExtRecipeResponse.cookTimeMinutes} min</li>
-          <li>Difficulty: {getExtRecipeResponse.difficulty}</li>
-          <li>Serves {getExtRecipeResponse.servings}</li>
-          <li>{getExtRecipeResponse.caloriesPerServing} kcal per serving</li>
+          <li>Preparation time: {prepTimeMinutes} min</li>
+          <li>Cooking time: {cookTimeMinutes} min</li>
+          <li>Difficulty: {difficulty}</li>
+          <li>Serves {servings}</li>
+          <li>{caloriesPerServing} kcal per serving</li>
         </ul>
       </div>
       <ul className="list-disc list-inside">
         Ingredients
-        {getExtRecipeResponse.ingredients.map((ingredient, i) => (
+        {ingredients.map((ingredient, i) => (
           <li key={i}>{ingredient}</li>
         ))}
       </ul>
 
       <ol className="list-decimal list-inside">
         Instructions
-        {getExtRecipeResponse.instructions.map((step, i) => (
+        {instructions.map((step, i) => (
           <li key={i}>{step}</li>
         ))}
       </ol>
