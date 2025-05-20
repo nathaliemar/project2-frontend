@@ -13,7 +13,7 @@ export function Navbar() {
           <li>
             <Link to={"/"}>Home</Link>
           </li>
-          <li>
+          <li className="min-w-[130px]">
             <details>
               <summary>Recipes</summary>
               <ul className="bg-base-100 rounded-t-none p-2">
@@ -22,6 +22,9 @@ export function Navbar() {
                 </li>
                 <li>
                   <Link to={"/cookbook"}>My Cookbook</Link>
+                </li>
+                <li>
+                  <Link to={"/add"}>Add recipe</Link>
                 </li>
               </ul>
             </details>
