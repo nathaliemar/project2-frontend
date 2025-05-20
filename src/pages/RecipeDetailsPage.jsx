@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useExtRecipeService } from "../services/ext-recipe-service";
 import { PageHeadline } from "../components/PageHeadline";
 import { useEffect } from "react";
+import { RecipeDetails } from "../components/RecipeDetails";
 
 export function RecipeDetailsPage() {
   const { recipeId } = useParams();
@@ -13,7 +14,6 @@ export function RecipeDetailsPage() {
   } = useExtRecipeService();
 
   useEffect(() => {
-    console.log("huhu");
     getExtRecipeById(recipeId);
   }, []);
 
@@ -37,30 +37,7 @@ export function RecipeDetailsPage() {
   return (
     <div className="recipe-page">
       <PageHeadline text={name} />
-      <img src={image} alt={`Photo of ${name}`} />
-      <div>
-        Key facts
-        <ul>
-          <li>Preparation time: {prepTimeMinutes} min</li>
-          <li>Cooking time: {cookTimeMinutes} min</li>
-          <li>Difficulty: {difficulty}</li>
-          <li>Serves {servings}</li>
-          <li>{caloriesPerServing} kcal per serving</li>
-        </ul>
-      </div>
-      <ul className="list-disc list-inside">
-        Ingredients
-        {ingredients.map((ingredient, i) => (
-          <li key={i}>{ingredient}</li>
-        ))}
-      </ul>
-
-      <ol className="list-decimal list-inside">
-        Instructions
-        {instructions.map((step, i) => (
-          <li key={i}>{step}</li>
-        ))}
-      </ol>
+      <RecipeDetails {...getExtRecipeResponse.data} />
     </div>
   );
 }

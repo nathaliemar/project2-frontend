@@ -1,9 +1,11 @@
+import { Navigate, useNavigate } from "react-router-dom";
 import { PageHeadline } from "../components/PageHeadline";
 import { RecipeForm } from "../components/RecipeForm";
 import { useIntRecipeService } from "../services/int-recipe-service";
 
 export function AddRecipePage() {
   const { postIntRecipe } = useIntRecipeService();
+  const navigate = useNavigate();
   //Add form submission handler
   const handleAddRecipe = async (formData) => {
     console.log(formData);
@@ -27,6 +29,7 @@ export function AddRecipePage() {
       const response = await postIntRecipe(reqBody);
       console.log("recipe added successfully", response);
       //TODO Add user-facing success message
+      navigate("/cookbook");
     } catch (error) {
       console.log("error adding recipe", error);
     }

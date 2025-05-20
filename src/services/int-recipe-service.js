@@ -22,6 +22,18 @@ export const useIntRecipeService = () => {
     });
   };
 
+  //PUT add recipe to favorites
+  const putFavorites = async (recipeId) => {
+    return fetcher({
+      method: "POST",
+      endPoint: "/favorites",
+      reqBody: { item_id: recipeId },
+    });
+  };
+
+  //GET favorite recipe IDs
+  const getFavorites = () => fetcher({ endPoint: "/favorites" });
+
   return {
     response,
     error,
@@ -29,6 +41,8 @@ export const useIntRecipeService = () => {
     getAllIntRecipes,
     getIntRecipeById,
     postIntRecipe,
+    putFavorites,
+    getFavorites,
     // getExtRecipeById: (id) => useFetch("https://dummyjson.com/recipes/" + id),
   };
 };
