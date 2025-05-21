@@ -4,6 +4,7 @@ import { useIntRecipeService } from "../services/int-recipe-service";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { RecipeCard } from "../components/RecipeCard";
 import { CookBookRecipeCard } from "../components/CookbookRecipeCard";
+import { Link } from "react-router-dom";
 
 export function CookbookPage() {
   const {
@@ -30,6 +31,9 @@ export function CookbookPage() {
   return (
     <div className="cookbook flex flex-col items-center justify-center min-h-screen">
       <PageHeadline text="Your cookbook" />
+      <Link to={"/cookbook/add"}>
+        <button className="btn btn-primary m-4">Add recipe</button>
+      </Link>
       <div className=" grid grid-cols-3 gap-4 items-center justify-center">
         {allIntRecipes.map(({ id, image, name }) => {
           return (

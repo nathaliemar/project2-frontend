@@ -22,6 +22,22 @@ export const useIntRecipeService = () => {
     });
   };
 
+  //DELETE recipe w/ ID
+  const deleteIntRecipe = async (recipeId) => {
+    return fetcher({
+      method: "DELETE",
+      endPoint: "/recipes/" + recipeId,
+    });
+  };
+  //PUT edited recipe
+  const putIntRecipe = async (reqBody) => {
+    return fetcher({
+      method: "PUT",
+      endPoint: "/recipes/" + reqBody.id,
+      reqBody: reqBody,
+    });
+  };
+
   //PUT add recipe to favorites
   const putFavorites = async (recipeId) => {
     return fetcher({
@@ -48,10 +64,12 @@ export const useIntRecipeService = () => {
     loading,
     getAllIntRecipes,
     getIntRecipeById,
+    putIntRecipe,
     postIntRecipe,
     putFavorites,
     getFavorites,
     deleteFavorites,
+    deleteIntRecipe,
     // getExtRecipeById: (id) => useFetch("https://dummyjson.com/recipes/" + id),
   };
 };

@@ -36,7 +36,7 @@ export function AddRecipePage() {
   };
 
   return (
-    <div className="add-recipe-page">
+    <div className="add-recipe-page m-4 flex flex-col justify-center items-center gap-4 ">
       <PageHeadline text="Add a new recipe" />
       <RecipeForm mode="add" onSubmit={handleAddRecipe} />
     </div>

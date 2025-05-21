@@ -23,7 +23,9 @@ export function RecipeForm({ mode, recipe = {}, onSubmit }) {
       setFormData({
         name: recipe.name || "",
         author: recipe.author || "",
-        imageUrl: recipe.imageUrl || "",
+        imageUrl:
+          recipe.imageUrl ||
+          "https://images.unsplash.com/photo-1645802734096-07f97fcd8bf2?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         ingredients: recipe.ingredients || [],
         instructions: recipe.instructions || [],
         prepTime: recipe.prepTime || 0,
