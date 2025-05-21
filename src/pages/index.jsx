@@ -6,4 +6,3 @@ export { RecipeDetailsPage } from "./RecipeDetailsPage";
 export { AboutPage } from "./AboutPage";
 export { NotFoundPage } from "./NotFoundPage";
 export { FavoritesPage } from "./FavoritesPage";
-export 
