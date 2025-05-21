@@ -8,9 +8,11 @@ import {
   AboutPage,
   RecipeDetailsPage,
   NotFoundPage,
+  FavoritesPage,
 } from "./pages";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
+import { CookBookDetailsPage } from "./pages/CookBookDetailsPage";
 
 function App() {
   return (
@@ -20,8 +22,10 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/explore" element={<ExplorePage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/recipes/:recipeId" element={<RecipeDetailsPage />} />
           <Route path="/cookbook" element={<CookbookPage />} />
+          <Route path="/cookbook/:recipeId" element={<CookBookDetailsPage />} />
           <Route path="/cookbook/add" element={<AddRecipePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<NotFoundPage />} />

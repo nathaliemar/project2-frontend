@@ -31,6 +31,14 @@ export const useIntRecipeService = () => {
     });
   };
 
+  //DELETE recipe from favorites
+  const deleteFavorites = async (favId) => {
+    return fetcher({
+      method: "DELETE",
+      endPoint: "/favorites/" + favId,
+    });
+  };
+
   //GET favorite recipe IDs
   const getFavorites = () => fetcher({ endPoint: "/favorites" });
 
@@ -43,6 +51,7 @@ export const useIntRecipeService = () => {
     postIntRecipe,
     putFavorites,
     getFavorites,
+    deleteFavorites,
     // getExtRecipeById: (id) => useFetch("https://dummyjson.com/recipes/" + id),
   };
 };

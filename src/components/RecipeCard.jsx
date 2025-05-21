@@ -1,9 +1,20 @@
 import { Link } from "react-router-dom";
 
-export function RecipeCard({ image, name, id, onSave }) {
+export function RecipeCard({
+  image,
+  name,
+  id,
+  onSave,
+  onRemove,
+  origin,
+  isFavorite,
+  favId,
+}) {
+  console.log("isFavvvvv", isFavorite);
+
   return (
     <div className="card bg-base-100 w-96 shadow-sm flex items-center justify-center">
-      <Link to={`/recipes/${id}`}>
+      <Link to={`/recipes/${id}`} state={{ origin }}>
         <figure>
           <img
             className="object-cover aspect-square"
@@ -16,8 +27,14 @@ export function RecipeCard({ image, name, id, onSave }) {
           <p>Here tags</p>
         </div>
       </Link>
+
       <div className="card-actions justify-between">
-        <Link to={`/recipes/${id}`} className="btn btn-primary m-2">
+        <Link
+          to={`/recipes/${id}`}
+          className="btn btn-primary m-2"
+          state={{ origin }}
+          // {/* state={{ origin: origin }} */}
+        >
           Details
         </Link>
         <button
@@ -25,11 +42,11 @@ export function RecipeCard({ image, name, id, onSave }) {
           // TODO hide save btn on cookbook
           onClick={(e) => {
             e.stopPropagation();
-            if (onSave) onSave(id);
+            isFavorite ? onRemove(favId) : onSave(id);
           }}
           className="btn btn-secondary m-2"
         >
-          Save
+          {isFavorite ? "Remove favorite" : "Save favorite"}
         </button>
       </div>
     </div>

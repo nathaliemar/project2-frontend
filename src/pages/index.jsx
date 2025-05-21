@@ -5,4 +5,5 @@ export { AddRecipePage } from "./AddRecipePage";
 export { RecipeDetailsPage } from "./RecipeDetailsPage";
 export { AboutPage } from "./AboutPage";
 export { NotFoundPage } from "./NotFoundPage";
-export { CookBookDetailsPage } from "./CookBookDetailsPage";
+export { FavoritesPage } from "./FavoritesPage";
+export 

@@ -1,11 +1,11 @@
-import { useExtRecipeService } from "../services/ext-recipe-service";
-import { PageHeadline } from "../components/PageHeadline";
 import { useEffect, useState } from "react";
+import { useExtRecipeService } from "../services/ext-recipe-service";
+import { useIntRecipeService } from "../services/int-recipe-service";
+import { PageHeadline } from "../components/PageHeadline";
 import { RecipeCard } from "../components/RecipeCard";
 import { LoadingScreen } from "../components/LoadingScreen";
-import { useIntRecipeService } from "../services/int-recipe-service";
 
-export function ExplorePage() {
+export function FavoritesPage() {
   const [recipes, setRecipes] = useState([]);
   const { putFavorites, response: putResponse } = useIntRecipeService();
   const { deleteFavorites, response: deleteFavResponse } =
@@ -75,41 +75,29 @@ export function ExplorePage() {
   };
 
   console.log(putResponse);
+
   return (
     <div className="explore-page flex flex-col items-center justify-center min-h-screen">
-      <PageHeadline text="Explore all recipes" />
+      <PageHeadline text="Your saved recipes" />
       <div className=" grid grid-cols-3 gap-4 items-center justify-center">
-        {recipes.map(({ id, image, name, isFavorite, favId }) => {
-          return (
-            <RecipeCard
-              key={id}
-              image={image}
-              name={name}
-              id={id}
-              onSave={handleSave}
-              onRemove={handleRemove}
-              isFavorite={isFavorite}
-              favId={favId}
-              origin="explore"
-            />
-          );
-        })}
+        {recipes
+          .filter((recipe) => recipe.isFavorite)
+          .map(({ id, image, name, isFavorite, favId }) => {
+            return (
+              <RecipeCard
+                key={id}
+                image={image}
+                name={name}
+                id={id}
+                onSave={handleSave}
+                onRemove={handleRemove}
+                isFavorite={isFavorite}
+                favId={favId}
+                origin="explore"
+              />
+            );
+          })}
       </div>
     </div>
   );
-
-  // return (
-  //   <div className="explore-page">
-  //     <PageHeadline text="Explore all recipes" />
-  //     <div>
-  //       {extRecipes.map((recipe) => {
-  //         return (
-  //           <Link key={recipe.id} to={"/recipes/" + recipe.id}>
-  //             <Card title={recipe.name} image={recipe.image} />
-  //           </Link>
-  //         );
-  //       })}
-  //     </div>
-  //   </div>
-  // );
 }
