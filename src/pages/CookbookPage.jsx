@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import { PageHeadline } from "../components/PageHeadline";
 import { useIntRecipeService } from "../services/int-recipe-service";
 import { LoadingScreen } from "../components/LoadingScreen";
-import { RecipeCard } from "../components/RecipeCard";
-import { CookBookRecipeCard } from "../components/CookbookRecipeCard";
+import { CookBookRecipeCard } from "../components/CookBookRecipeCard";
 import { Link } from "react-router-dom";
 
 export function CookbookPage() {
