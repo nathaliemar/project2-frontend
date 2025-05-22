@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { PageHeadline } from "../components/PageHeadline";
 import { RecipeDetails } from "../components/RecipeDetails";
 import { useIntRecipeService } from "../services/int-recipe-service";
@@ -40,7 +40,6 @@ export function CookBookDetailsPage() {
   };
   //Toggle Form visible
   const handleEdit = () => setEditFormVisible(!editFormVisible);
-  // TODO PATCH to int DB
   const handleSubmitEdits = async (formData) => {
     //transform formData to match syntax of API
     const reqBody = {
@@ -66,7 +65,6 @@ export function CookBookDetailsPage() {
     try {
       const response = await putIntRecipe(reqBody);
       console.log("recipe added successfully", response);
-      //TODO Add user-facing success message
       navigate(`/cookbook/${recipeId}`);
     } catch (error) {
       console.log("error adding recipe", error);
@@ -75,6 +73,11 @@ export function CookBookDetailsPage() {
   return (
     <div className="cookbook-details-page">
       <PageHeadline text={intRecipe.name} />
+      <div className="flex justify-center items-center">
+        <Link to={"/cookbook"}>
+          <button className="btn btn-primary m-4">Go Back</button>
+        </Link>
+      </div>
       <RecipeDetails {...getIntRecipeResponse.data} />
       <div className="m-4 flex flex-row justify-center items-center gap-4">
         <button className="btn btn-primary" onClick={handleEdit}>

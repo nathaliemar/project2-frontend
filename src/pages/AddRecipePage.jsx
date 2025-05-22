@@ -28,7 +28,6 @@ export function AddRecipePage() {
     try {
       const response = await postIntRecipe(reqBody);
       console.log("recipe added successfully", response);
-      //TODO Add user-facing success message
       navigate("/cookbook");
     } catch (error) {
       console.log("error adding recipe", error);

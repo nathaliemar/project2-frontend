@@ -1,6 +1,6 @@
 //###VERSION 01####//
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useExtRecipeService } from "../services/ext-recipe-service";
 import { PageHeadline } from "../components/PageHeadline";
 import { useEffect } from "react";
@@ -8,6 +8,7 @@ import { RecipeDetails } from "../components/RecipeDetails";
 
 export function RecipeDetailsPage() {
   const { recipeId } = useParams();
+  const navigate = useNavigate();
   const {
     response: getExtRecipeResponse,
     error: getExtRecipeError,
@@ -21,13 +22,18 @@ export function RecipeDetailsPage() {
 
   if (getExtRecipeLoading) return <p>Loading...</p>;
   if (getExtRecipeError) return <p>Oops, there has been an issue</p>;
-  if (!getExtRecipeResponse) return <p>No data available</p>; //TODO: Check if needed elsewhere
+  if (!getExtRecipeResponse) return <p>No data available</p>;
   const { name } = getExtRecipeResponse.data;
   console.log("Extrecipedata:", getExtRecipeResponse);
 
   return (
     <div className="recipe-page">
       <PageHeadline text={name} />
+      <div className="flex justify-center items-center">
+        <button onClick={() => navigate(-1)} className="btn btn-primary m-4">
+          Go Back
+        </button>
+      </div>
       <RecipeDetails {...getExtRecipeResponse.data} />
     </div>
   );

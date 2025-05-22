@@ -57,7 +57,6 @@ export function FavoritesPage() {
       console.log("Favorite added successfully", resp);
       getAllExtRecipes();
       getFavorites();
-      //TODO add user-facing success message
     } catch (err) {
       console.log(err);
     }
@@ -68,7 +67,6 @@ export function FavoritesPage() {
       console.log("Favorite deleted successfully", resp);
       getAllExtRecipes();
       getFavorites();
-      //TODO add user-facing success message
     } catch (err) {
       console.log(err);
     }
@@ -79,7 +77,7 @@ export function FavoritesPage() {
   return (
     <div className="explore-page flex flex-col items-center justify-center min-h-screen">
       <PageHeadline text="Your saved recipes" />
-      <div className=" grid grid-cols-3 gap-4 items-center justify-center">
+      <div className=" grid grid-cols-3 gap-4 items-center justify-center mb-4">
         {recipes
           .filter((recipe) => recipe.isFavorite)
           .map(({ id, image, name, isFavorite, favId }) => {

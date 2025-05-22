@@ -24,11 +24,10 @@ export function RecipeCard({
         </figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
-          <p>Here tags</p>
         </div>
       </Link>
 
-      <div className="card-actions justify-between">
+      <div className="card-actions justify-between mb-4">
         <Link
           to={`/recipes/${id}`}
           className="btn btn-primary m-2"
@@ -39,7 +38,6 @@ export function RecipeCard({
         </Link>
         <button
           //   Whole card is a link to details, except for Save btn -> separate handler
-          // TODO hide save btn on cookbook
           onClick={(e) => {
             e.stopPropagation();
             isFavorite ? onRemove(favId) : onSave(id);

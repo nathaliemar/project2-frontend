@@ -30,7 +30,7 @@ export default function useFetch(baseURL) {
       });
       console.log(response);
 
-      setData(response); //TODO Why did it first work with only "response", then stopped?
+      setData(response);
       setError(null);
     } catch (err) {
       console.error("Error in useFetch hook", err);

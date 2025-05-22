@@ -1,11 +1,11 @@
-# Recipe App
+# getCooked App
 
-The Recipe App allows users to browse a selection of recipes and save predefined or custom recipes to their personal cookbook.
+The getCooked App allows users to browse a selection of recipes and save custom recipes to their personal cookbook.
 
 ## Features
 
 - Browse a variety of recipes.
-- Save predefined recipes to your cookbook.
+- Save predefined recipes to your favorites.
 - Create and save custom recipes.
 
 ## Installation
